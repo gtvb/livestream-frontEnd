@@ -1,0 +1,87 @@
+.telalogin {
+  position: absolute;
+  top: 212px;
+  left: 520px;
+  background-color: #0c0435;
+  width: 400px;
+  height: 600px;
+}
+.password1 {
+  margin: 0;
+}
+.password {
+  position: absolute;
+  top: 538px;
+  left: 570px;
+  display: inline-block;
+  width: 150px;
+  height: 30px;
+}
+.passwordrec {
+  position: absolute;
+  top: 568px;
+  left: 570px;
+  border-radius: 20px;
+  background-color: #d9d9d9;
+  width: 300px;
+  height: 50px;
+}
+.usernamerec {
+  position: absolute;
+  top: 467px;
+  left: 570px;
+  border-radius: 20px;
+  background-color: #d9d9d9;
+  width: 300px;
+  height: 50px;
+}
+.login {
+  position: absolute;
+  top: 671px;
+  left: 587px;
+  font-size: 30px;
+  text-align: left;
+  display: inline-block;
+  width: 250px;
+  height: 40px;
+}
+.createUser {
+  position: absolute;
+  top: 711px;
+  left: 587px;
+  font-size: 30px;
+  text-align: left;
+  display: inline-block;
+  width: 250px;
+  height: 40px;
+}
+.selolivestreamIcon {
+  position: absolute;
+  top: 142px;
+  left: 545px;
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+}
+.username {
+  position: absolute;
+  top: 437px;
+  left: 570px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 30px;
+}
+.page1 {
+  width: 100%;
+  position: relative;
+  background-color: #000;
+  height: 1024px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 23px;
+  color: #fff;
+  font-family: Inter;
+}
+
