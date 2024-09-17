@@ -1,23 +1,72 @@
+"use client"; // Adicione esta linha
+
 import type { NextPage } from 'next';
+import { useState } from 'react';
 import styles from './index.module.css';
 
+const Page: NextPage = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-const Page:NextPage = () => {
-  	return (
-    		<div className={styles.page1}>
-      			<div className={styles.telalogin} />
-      			<div className={styles.passwordrec} />
-      			<div className={styles.entrarEmLivestream}>Entrar em Livestream</div>
-      			<div className={styles.senha}>Senha</div>
-      			<div className={styles.passwordrec1} />
-      			<div className={styles.usernamerec} />
-      			<div className={styles.aindaNoPossui}>Ainda não possui uma conta? Cadastrar-se</div>
-        				<div className={styles.problemasParaEfetuar}>Problemas para efetuar login?</div>
-          					<div className={styles.usurio}>Usuário</div>
-          					<div className={styles.entrar}>Entrar</div>
-          					<img className={styles.fire1Icon} alt="" src="fire 1.svg" />
-          					</div>);
-        				};
-        				
-        				export default Page;
-        				
+  const handleLogin = async () => {
+    if (!username || !password) {
+      setError('Usuário e senha são obrigatórios');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        alert('Login realizado com sucesso!');
+      } else {
+        setError('Credenciais inválidas');
+      }
+    } catch (error) {
+      setError('Erro ao efetuar login');
+    }
+  };
+
+  return (
+    <div className={styles.page1}>
+      <div className={styles.telalogin}>
+        <div className={styles.entrarEmLivestream}>
+          <img className={styles.fire1Icon} alt="" src="icon.svg" />
+          Entrar em Livestream
+        </div>
+
+        <input
+          className={styles.inputField}
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Usuário"
+        />
+
+        <input
+          className={styles.inputField}
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Senha"
+        />
+
+        {error && <div className={styles.error}>{error}</div>}
+
+        <button className={styles.entrar} onClick={handleLogin}>
+          Entrar
+        </button>
+
+        <div className={styles.problemasParaEfetuar}>Problemas para efetuar login?</div>
+        <div className={styles.aindaNoPossui}>Ainda não possui uma conta? Cadastrar-se</div>
+      </div>
+    </div>
+  );
+};
+
+export default Page;
