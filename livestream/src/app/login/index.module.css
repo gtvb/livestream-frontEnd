@@ -1,87 +1,115 @@
 .telalogin {
-  position: absolute;
-  top: 212px;
-  left: 520px;
-  background-color: #0c0435;
-  width: 400px;
+  width: 100%;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.48);
   height: 600px;
-}
-.password1 {
-  margin: 0;
-}
-.password {
+  }
+.passwordrec {
   position: absolute;
-  top: 538px;
-  left: 570px;
+  top: 719px;
+  left: 844px;
+  border-radius: 20px;
+  background-color: #0bc5ea;
+  width: 231px;
+  height: 50px;
+}
+.entrarEmLivestream {
+  position: absolute;
+  top: 366px;
+  left: 813px;
+  font-weight: 600;
+  display: inline-block;
+  width: 340px;
+  height: 40px;
+}
+.senha {
+  position: absolute;
+  top: 580px;
+  left: 635px;
+  font-size: 23px;
+  font-weight: 600;
+  text-align: center;
   display: inline-block;
   width: 150px;
   height: 30px;
 }
-.passwordrec {
+.passwordrec1 {
   position: absolute;
-  top: 568px;
-  left: 570px;
+  top: 610px;
+  left: 660px;
   border-radius: 20px;
-  background-color: #d9d9d9;
-  width: 300px;
+  background-color: #0bc5ea;
+  width: 585px;
   height: 50px;
 }
 .usernamerec {
   position: absolute;
-  top: 467px;
-  left: 570px;
+  top: 509px;
+  left: 660px;
   border-radius: 20px;
-  background-color: #d9d9d9;
-  width: 300px;
+  background-color: #0bc5ea;
+  width: 585px;
   height: 50px;
 }
-.login {
+.aindaNoPossui {
   position: absolute;
-  top: 671px;
-  left: 587px;
-  font-size: 30px;
-  text-align: left;
+  top: 797px;
+  left: 675px;
+  font-weight: 600;
   display: inline-block;
-  width: 250px;
-  height: 40px;
+  width: 655px;
+  height: 38px;
 }
-.createUser {
+.problemasParaEfetuar {
   position: absolute;
-  top: 711px;
-  left: 587px;
-  font-size: 30px;
-  text-align: left;
+  top: 673px;
+  left: 675px;
+  font-size: 16px;
+  font-weight: 600;
   display: inline-block;
-  width: 250px;
-  height: 40px;
+  width: 655px;
+  height: 38px;
 }
-.selolivestreamIcon {
+.usurio {
   position: absolute;
-  top: 142px;
-  left: 545px;
-  width: 350px;
-  height: 350px;
-  object-fit: cover;
-}
-.username {
-  position: absolute;
-  top: 437px;
-  left: 570px;
+  top: 479px;
+  left: 642px;
+  font-size: 23px;
+  font-weight: 600;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 150px;
   height: 30px;
 }
+.entrar {
+  position: absolute;
+  top: 724px;
+  left: 916px;
+  font-weight: 600;
+  color: #fff;
+  display: inline-block;
+  width: 250px;
+  height: 40px;
+}
+.fire1Icon {
+  position: absolute;
+  top: 370px;
+  left: 766px;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+}
 .page1 {
   width: 100%;
   position: relative;
   background-color: #000;
-  height: 1024px;
+  height: 1080px;
   overflow: hidden;
-  text-align: center;
-  font-size: 23px;
-  color: #fff;
-  font-family: Inter;
+  text-align: left;
+  font-size: 30px;
+  color: #0bc5ea;
+  font-family: 'Plus Jakarta Sans';
 }
 
