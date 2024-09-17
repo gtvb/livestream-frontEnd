@@ -49,4 +49,21 @@
     width: 100%;
     margin-top: 20px;
   }
+
+  .backToLogin a {
+    display: inline-block;
+    color: #00BFFF; /* Cor azul */
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #00BFFF; /* Borda azul */
+    border-radius: 10px; /* Arredonda a borda */
+    margin-top: 10px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s; /* Adiciona efeito ao passar o mouse */
+  }
+  
+  .backToLogin a:hover {
+    background-color: #00BFFF; /* Fundo azul ao passar o mouse */
+    color: white; /* Texto branco ao passar o mouse */
+  }
   

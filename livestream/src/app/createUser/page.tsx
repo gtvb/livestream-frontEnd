@@ -1,6 +1,7 @@
 "use client"; // Adicione esta linha
 
 import type { NextPage } from 'next';
+import Link from 'next/link'; // Importa o Link
 import { useState } from 'react';
 import styles from './register.module.css';
 
@@ -81,6 +82,13 @@ const RegisterPage: NextPage = () => {
         <button className={styles.cadastrar} onClick={handleRegister}>
           Cadastrar
         </button>
+
+        <div className={styles.backToLogin}>
+          {/* Link para a página de login */}
+          <Link href="/login" legacyBehavior>
+            <a>Voltar para login</a>
+          </Link>
+        </div>
       </div>
     </div>
   );

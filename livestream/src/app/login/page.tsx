@@ -1,6 +1,7 @@
 "use client"; // Adicione esta linha
 
 import type { NextPage } from 'next';
+import Link from 'next/link'; // Importa o componente Link para navegação
 import { useState } from 'react';
 import styles from './index.module.css';
 
@@ -62,8 +63,19 @@ const Page: NextPage = () => {
           Entrar
         </button>
 
-        <div className={styles.problemasParaEfetuar}>Problemas para efetuar login?</div>
-        <div className={styles.aindaNoPossui}>Ainda não possui uma conta? Cadastrar-se</div>
+        {/* Link para a página de problemas para login */}
+        <Link href="/forgotPassword" passHref>
+          <div className={styles.problemasParaEfetuar}>
+            Problemas para efetuar login?
+          </div>
+        </Link>
+
+        {/* Link para a página de cadastro */}
+        <Link href="/createUser" passHref>
+          <div className={styles.aindaNoPossui}>
+            Ainda não possui uma conta? Cadastrar-se
+          </div>
+        </Link>
       </div>
     </div>
   );

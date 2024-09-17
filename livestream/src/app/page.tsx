@@ -1,9 +1,9 @@
-import ForgotPasswordPage from "./forggetPass";
+import Login from "./login/page";
 
 function App() {
   return (
     <div>
-      <ForgotPasswordPage />
+      <Login />
     </div>
   );
 }

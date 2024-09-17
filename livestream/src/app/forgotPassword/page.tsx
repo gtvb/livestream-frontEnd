@@ -1,6 +1,7 @@
 "use client"; // Adicione esta linha
 
 import type { NextPage } from 'next';
+import Link from 'next/link'; // Importa o Link
 import { useState } from 'react';
 import styles from './forgotPassword.module.css';
 
@@ -55,7 +56,10 @@ const ForgotPasswordPage: NextPage = () => {
         </button>
 
         <div className={styles.backToLogin}>
-          <a href="/login">Voltar para login</a>
+          {/* Link para a página de login */}
+          <Link href="/login" legacyBehavior>
+            <a>Voltar para login</a>
+          </Link>
         </div>
       </div>
     </div>
