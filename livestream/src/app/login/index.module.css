@@ -1,13 +1,15 @@
 .telalogin {
-  width: 100%;
-  position: relative;
+  position: absolute;
+  top: 150px;
+  left: 320px;
   background-color: rgba(255, 255, 255, 0.48);
+  width: 800px;
   height: 600px;
-  }
+}
 .passwordrec {
   position: absolute;
-  top: 719px;
-  left: 844px;
+  top: 594px;
+  left: 595px;
   border-radius: 20px;
   background-color: #0bc5ea;
   width: 231px;
@@ -15,8 +17,8 @@
 }
 .entrarEmLivestream {
   position: absolute;
-  top: 366px;
-  left: 813px;
+  top: 241px;
+  left: 564px;
   font-weight: 600;
   display: inline-block;
   width: 340px;
@@ -24,8 +26,8 @@
 }
 .senha {
   position: absolute;
-  top: 580px;
-  left: 635px;
+  top: 455px;
+  left: 386px;
   font-size: 23px;
   font-weight: 600;
   text-align: center;
@@ -35,8 +37,8 @@
 }
 .passwordrec1 {
   position: absolute;
-  top: 610px;
-  left: 660px;
+  top: 485px;
+  left: 411px;
   border-radius: 20px;
   background-color: #0bc5ea;
   width: 585px;
@@ -44,8 +46,8 @@
 }
 .usernamerec {
   position: absolute;
-  top: 509px;
-  left: 660px;
+  top: 384px;
+  left: 411px;
   border-radius: 20px;
   background-color: #0bc5ea;
   width: 585px;
@@ -53,8 +55,8 @@
 }
 .aindaNoPossui {
   position: absolute;
-  top: 797px;
-  left: 675px;
+  top: 672px;
+  left: 426px;
   font-weight: 600;
   display: inline-block;
   width: 655px;
@@ -62,8 +64,8 @@
 }
 .problemasParaEfetuar {
   position: absolute;
-  top: 673px;
-  left: 675px;
+  top: 548px;
+  left: 426px;
   font-size: 16px;
   font-weight: 600;
   display: inline-block;
@@ -72,8 +74,8 @@
 }
 .usurio {
   position: absolute;
-  top: 479px;
-  left: 642px;
+  top: 354px;
+  left: 393px;
   font-size: 23px;
   font-weight: 600;
   text-align: center;
@@ -85,8 +87,8 @@
 }
 .entrar {
   position: absolute;
-  top: 724px;
-  left: 916px;
+  top: 599px;
+  left: 667px;
   font-weight: 600;
   color: #fff;
   display: inline-block;
@@ -95,8 +97,8 @@
 }
 .fire1Icon {
   position: absolute;
-  top: 370px;
-  left: 766px;
+  top: 245px;
+  left: 517px;
   width: 32px;
   height: 32px;
   overflow: hidden;
@@ -105,7 +107,7 @@
   width: 100%;
   position: relative;
   background-color: #000;
-  height: 1080px;
+  height: 900px;
   overflow: hidden;
   text-align: left;
   font-size: 30px;
