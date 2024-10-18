@@ -15,7 +15,7 @@
 
 .rightSection {
   flex: 0.6;
-  background-image: url('../../../publics/assets/image.png');
+  background-image: url('/assets/images/image.png');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -26,19 +26,22 @@
 }
 
 .loginTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
   margin-bottom: 20px;
+}
+
+.confettiIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
 }
 
 .loginTitle h1 {
   font-size: 28px;
   color: #0bc5ea;
-  margin-bottom: 10px;
-}
-
-.loginTitle p {
-  font-size: 16px;
-  color: #aaa;
 }
 
 .inputContainer {
@@ -53,18 +56,30 @@
   display: block;
 }
 
-.inputField {
-  width: 100%;
-  padding: 15px;
-  margin-top: 5px;
-  border-radius: 8px;
-  border: 1px solid #333;
+.inputWithIcon {
+  display: flex;
+  align-items: center;
   background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.inputField {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
   color: #fff;
   font-size: 16px;
 }
 
-/* Contêiner para alinhar a label e o link "Esqueci minha senha" */
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
 .passwordLabelContainer {
   display: flex;
   justify-content: space-between;
@@ -89,11 +104,6 @@
   background-color: #00a3c4;
 }
 
-.linksContainer {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .textLinkRight {
   color: #0bc5ea;
   font-size: 14px;
@@ -111,3 +121,12 @@
   font-size: 14px;
   cursor: pointer;
 }
+
+.loginDescription {
+  text-align: center;
+  font-size: 16px;
+  color: #aaa;
+  margin-top: 10px;
+  padding-bottom: 5%;
+}
+

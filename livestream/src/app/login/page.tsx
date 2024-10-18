@@ -37,27 +37,32 @@ const Page: NextPage = () => {
     <div className={styles.page1}>
       <div className={styles.leftSection}>
         <div className={styles.loginTitle}>
-          <img className={styles.icon} alt="Icon" src="/icon.svg" />
+          <img className={styles.confettiIcon} alt="Confetti Icon" src="/assets/images/Confetti.png" />
           <h1>Seja bem-vindo de volta!</h1>
-          <p>Faça o login na nossa plataforma e aproveite o melhor da criação de conteúdo!</p>
         </div>
+        <p className={styles.loginDescription}>
+        Faça o login na nossa plataforma e aproveite o melhor da criação de conteúdo!
+        </p>
 
-        {/* Campo Usuário com o texto em cima */}
+        {/* Campo Usuário com ícone */}
         <div className={styles.inputContainer}>
           <label className={styles.label} htmlFor="username">
             Usuário
           </label>
-          <input
-            className={styles.inputField}
-            id="username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Digite seu nome de usuário"
-          />
+          <div className={styles.inputWithIcon}>
+            <img className={styles.icon} alt="User Icon" src="/assets/images/User.png" />
+            <input
+              className={styles.inputField}
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Digite seu nome de usuário"
+            />
+          </div>
         </div>
 
-        {/* Campo Senha com o botão "Esqueci minha senha" na mesma linha */}
+        {/* Campo Senha com ícone */}
         <div className={styles.inputContainer}>
           <div className={styles.passwordLabelContainer}>
             <label className={styles.label} htmlFor="password">
@@ -67,14 +72,17 @@ const Page: NextPage = () => {
               <div className={styles.textLinkRight}>Esqueci minha senha</div>
             </Link>
           </div>
-          <input
-            className={styles.inputField}
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Digite sua senha"
-          />
+          <div className={styles.inputWithIcon}>
+            <img className={styles.icon} alt="Password Icon" src="/assets/images/Key.png" />
+            <input
+              className={styles.inputField}
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Digite sua senha"
+            />
+          </div>
         </div>
 
         {error && <div className={styles.error}>{error}</div>}
