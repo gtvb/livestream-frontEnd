@@ -13,7 +13,7 @@
 .image {
   width: 50%; /* Metade da tela */
   height: 100%; /* Altura total da tela */
-  background-image: url('../../../publics/assets/image2.png'); /* Caminho da sua imagem */
+  background-image: url('/assets/images/image2.png'); /* Caminho da sua imagem */
   background-size: cover;
   background-position: center;
 }

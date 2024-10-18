@@ -13,7 +13,7 @@ const SignUp = () => {
       <div className={styles.image}></div>
       <div className={styles.frameParent}>
         <div className={styles.boldDuotoneFacesEmotionsParent}>
-          <img className={styles.boldDuotoneFacesEmotions} alt="" src="../../../publics/assets/Sticker Smile Circle.svg" />
+          <img className={styles.boldDuotoneFacesEmotions} alt="" src="/assets/images/Sticker Smile Circle.png" />
           <h2 className={styles.crieSuaConta}>Crie sua conta no livestream</h2>
           <p className={styles.entreComSeu}>Entre com seu nome, email e senha e aproveite o máximo que uma plataforma de lives pode oferecer!</p>
         </div>
@@ -21,28 +21,28 @@ const SignUp = () => {
           <div className={styles.usurioParent}>
             <label className={styles.usurio}>Usuário</label>
             <div className={styles.userParent}>
-              <img className={styles.userIcon} alt="" src="../../../publics/User.svg" />
+              <img className={styles.userIcon} alt="" src="./assets/images/User.png" />
               <input className={styles.digiteSeuNome} placeholder="Digite seu nome de usuário" />
             </div>
           </div>
           <div className={styles.usurioParent}>
             <label className={styles.usurio}>Email</label>
             <div className={styles.userParent}>
-              <img className={styles.userIcon} alt="" src="../../../publics/assets/Envelope.svg" />
+              <img className={styles.userIcon} alt="" src="/assets/images/Envelope.svg" />
               <input className={styles.digiteSeuNome} placeholder="Digite seu melhor email" />
             </div>
           </div>
           <div className={styles.usurioParent}>
             <label className={styles.usurio}>Senha</label>
             <div className={styles.userParent}>
-              <img className={styles.userIcon} alt="" src="../../../publics/Key.svg" />
+              <img className={styles.userIcon} alt="" src="/assets/images/Key.png" />
               <input className={styles.digiteSeuNome} type="password" placeholder="Digite sua senha mais segura" />
             </div>
           </div>
           <div className={styles.usurioParent}>
             <label className={styles.usurio}>Confirme sua senha</label>
             <div className={styles.userParent}>
-              <img className={styles.userIcon} alt="" src="../../../publics/assets/ShieldCheck.svg" />
+              <img className={styles.userIcon} alt="" src="/assets/images/ShieldCheck.svg" />
               <input className={styles.digiteSeuNome} type="password" placeholder="Digite sua senha novamente" />
             </div>
           </div>
