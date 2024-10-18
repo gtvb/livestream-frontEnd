@@ -1,7 +1,7 @@
-"use client"; // Adicione esta linha
+"use client";
 
 import type { NextPage } from 'next';
-import Link from 'next/link'; // Importa o componente Link para navegação
+import Link from 'next/link';
 import { useState } from 'react';
 import styles from './index.module.css';
 
@@ -35,48 +35,62 @@ const Page: NextPage = () => {
 
   return (
     <div className={styles.page1}>
-      <div className={styles.telalogin}>
-        <div className={styles.entrarEmLivestream}>
-          <img className={styles.fire1Icon} alt="" src="icon.svg" />
-          Entrar em Livestream
+      <div className={styles.leftSection}>
+        <div className={styles.loginTitle}>
+          <img className={styles.icon} alt="Icon" src="/icon.svg" />
+          <h1>Seja bem-vindo de volta!</h1>
+          <p>Faça o login na nossa plataforma e aproveite o melhor da criação de conteúdo!</p>
         </div>
 
-        <input
-          className={styles.inputField}
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Usuário"
-        />
+        {/* Campo Usuário com o texto em cima */}
+        <div className={styles.inputContainer}>
+          <label className={styles.label} htmlFor="username">
+            Usuário
+          </label>
+          <input
+            className={styles.inputField}
+            id="username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Digite seu nome de usuário"
+          />
+        </div>
 
-        <input
-          className={styles.inputField}
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Senha"
-        />
+        {/* Campo Senha com o botão "Esqueci minha senha" na mesma linha */}
+        <div className={styles.inputContainer}>
+          <div className={styles.passwordLabelContainer}>
+            <label className={styles.label} htmlFor="password">
+              Senha
+            </label>
+            <Link href="/forgotPassword" passHref>
+              <div className={styles.textLinkRight}>Esqueci minha senha</div>
+            </Link>
+          </div>
+          <input
+            className={styles.inputField}
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Digite sua senha"
+          />
+        </div>
 
         {error && <div className={styles.error}>{error}</div>}
 
-        <button className={styles.entrar} onClick={handleLogin}>
+        <button className={styles.loginButton} onClick={handleLogin}>
           Entrar
         </button>
 
-        {/* Link para a página de problemas para login */}
-        <Link href="/forgotPassword" passHref>
-          <div className={styles.problemasParaEfetuar}>
-            Problemas para efetuar login?
-          </div>
-        </Link>
-
-        {/* Link para a página de cadastro */}
-        <Link href="/createUser" passHref>
-          <div className={styles.aindaNoPossui}>
-            Ainda não possui uma conta? Cadastrar-se
-          </div>
-        </Link>
+        <div className={styles.linkCenter}>
+          <Link href="/createUser" passHref>
+            <div className={styles.textLinkCenter}>Ainda não possuo uma conta</div>
+          </Link>
+        </div>
       </div>
+
+      <div className={styles.rightSection}></div>
     </div>
   );
 };

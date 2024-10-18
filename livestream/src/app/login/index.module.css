@@ -1,65 +1,113 @@
 .page1 {
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
+  background-color: #0d0d0d;
+}
+
+.leftSection {
+  flex: 0.4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
   background-color: #000;
 }
 
-.telalogin {
-  background-color: rgba(128, 128, 128, 0.8); /* Cor de fundo cinza com transparência */
-  width: 600px;
-  height: 400px;
-  padding: 40px;
-  border-radius: 20px;
+.rightSection {
+  flex: 0.6;
+  background-image: url('../../../publics/assets/image.png');
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.entrarEmLivestream {
-  font-weight: 600;
-  font-size: 24px;
-  color: #0bc5ea;
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
   justify-content: center;
+  color: #fff;
+  padding: 40px;
 }
 
-.fire1Icon {
-  width: 32px;
-  height: 32px;
-  margin-right: 8px;
+.loginTitle {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.loginTitle h1 {
+  font-size: 28px;
+  color: #0bc5ea;
+  margin-bottom: 10px;
+}
+
+.loginTitle p {
+  font-size: 16px;
+  color: #aaa;
+}
+
+.inputContainer {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.label {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 5px;
+  display: block;
 }
 
 .inputField {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 20px;
-  border: none;
-  background-color: #0bc5ea;
+  padding: 15px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
 }
 
-.entrar {
+/* Contêiner para alinhar a label e o link "Esqueci minha senha" */
+.passwordLabelContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.loginButton {
   background-color: #0bc5ea;
   color: #fff;
   border: none;
-  border-radius: 20px;
-  padding: 12px;
-  font-size: 18px;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 16px;
   cursor: pointer;
   width: 100%;
   margin-top: 20px;
+  transition: background-color 0.3s ease;
 }
 
-.aindaNoPossui, .problemasParaEfetuar {
+.loginButton:hover {
+  background-color: #00a3c4;
+}
+
+.linksContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.textLinkRight {
   color: #0bc5ea;
   font-size: 14px;
-  margin-top: 10px;
-  text-align: center;
+  cursor: pointer;
+}
+
+.linkCenter {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.textLinkCenter {
+  color: #0bc5ea;
+  font-size: 14px;
+  cursor: pointer;
 }
