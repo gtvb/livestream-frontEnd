@@ -1,9 +1,9 @@
-import Login from "./login/page";
+import CreateUser from "./createUser/page";
 
 function App() {
   return (
     <div>
-      <Login />
+      <CreateUser />
     </div>
   );
 }

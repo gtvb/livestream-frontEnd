@@ -1,97 +1,59 @@
-"use client"; // Adicione esta linha
-
-import type { NextPage } from 'next';
-import Link from 'next/link'; // Importa o Link
-import { useState } from 'react';
+"use client";
+import { useCallback } from 'react';
 import styles from './register.module.css';
 
-const RegisterPage: NextPage = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const handleRegister = async () => {
-    if (!username || !email || !password || !confirmPassword) {
-      setError('Todos os campos são obrigatórios');
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError('As senhas não coincidem');
-      return;
-    }
-
-    try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password }),
-      });
-
-      if (response.ok) {
-        alert('Cadastro realizado com sucesso!');
-      } else {
-        setError('Erro ao cadastrar');
-      }
-    } catch (error) {
-      setError('Erro ao processar o cadastro');
-    }
-  };
-
+const SignUp = () => {
+  
+  const onJPossuoUmaClick = useCallback(() => {
+    // Adicione a lógica para "Já possuo uma conta"
+  }, []);
+  
   return (
-    <div className={styles.page1}>
-      <div className={styles.telalogin}>
-        <div className={styles.cadastrarUsuario}>Cadastrar Usuário</div>
-
-        <input
-          className={styles.inputField}
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Usuário"
-        />
-
-        <input
-          className={styles.inputField}
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-        />
-
-        <input
-          className={styles.inputField}
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Senha"
-        />
-
-        <input
-          className={styles.inputField}
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirmar Senha"
-        />
-
-        {error && <div className={styles.error}>{error}</div>}
-
-        <button className={styles.cadastrar} onClick={handleRegister}>
-          Cadastrar
-        </button>
-
-        <div className={styles.backToLogin}>
-          {/* Link para a página de login */}
-          <Link href="/login" legacyBehavior>
-            <a>Voltar para login</a>
-          </Link>
+    <div className={styles.signUp}>
+      <div className={styles.image}></div>
+      <div className={styles.frameParent}>
+        <div className={styles.boldDuotoneFacesEmotionsParent}>
+          <img className={styles.boldDuotoneFacesEmotions} alt="" src="../../../publics/assets/Sticker Smile Circle.svg" />
+          <h2 className={styles.crieSuaConta}>Crie sua conta no livestream</h2>
+          <p className={styles.entreComSeu}>Entre com seu nome, email e senha e aproveite o máximo que uma plataforma de lives pode oferecer!</p>
         </div>
+        <div className={styles.frameGroup}>
+          <div className={styles.usurioParent}>
+            <label className={styles.usurio}>Usuário</label>
+            <div className={styles.userParent}>
+              <img className={styles.userIcon} alt="" src="../../../publics/User.svg" />
+              <input className={styles.digiteSeuNome} placeholder="Digite seu nome de usuário" />
+            </div>
+          </div>
+          <div className={styles.usurioParent}>
+            <label className={styles.usurio}>Email</label>
+            <div className={styles.userParent}>
+              <img className={styles.userIcon} alt="" src="../../../publics/assets/Envelope.svg" />
+              <input className={styles.digiteSeuNome} placeholder="Digite seu melhor email" />
+            </div>
+          </div>
+          <div className={styles.usurioParent}>
+            <label className={styles.usurio}>Senha</label>
+            <div className={styles.userParent}>
+              <img className={styles.userIcon} alt="" src="../../../publics/Key.svg" />
+              <input className={styles.digiteSeuNome} type="password" placeholder="Digite sua senha mais segura" />
+            </div>
+          </div>
+          <div className={styles.usurioParent}>
+            <label className={styles.usurio}>Confirme sua senha</label>
+            <div className={styles.userParent}>
+              <img className={styles.userIcon} alt="" src="../../../publics/assets/ShieldCheck.svg" />
+              <input className={styles.digiteSeuNome} type="password" placeholder="Digite sua senha novamente" />
+            </div>
+          </div>
+        </div>
+        <div className={styles.criarContaWrapper}>
+          <b className={styles.digiteSeuNome}>Criar conta</b>
+        </div>
+        <b className={styles.jPossuoUma} onClick={onJPossuoUmaClick}>Já possuo uma conta</b>
       </div>
     </div>
   );
 };
 
-export default RegisterPage;
+export default SignUp;
