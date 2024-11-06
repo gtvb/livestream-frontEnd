@@ -1,10 +1,10 @@
-.page1 {
+.loginPage {
   display: flex;
   height: 100vh;
   background-color: #0d0d0d;
 }
 
-.leftSection {
+.leftPanel {
   flex: 0.4;
   display: flex;
   flex-direction: column;
@@ -13,9 +13,9 @@
   background-color: #000;
 }
 
-.rightSection {
+.rightPanel {
   flex: 0.6;
-  background-image: url('/assets/images/image.png');
+  background-image: url('/assets/images/login_banner.png');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -25,7 +25,7 @@
   padding: 40px;
 }
 
-.loginTitle {
+.welcomeHeader {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,30 +33,38 @@
   margin-bottom: 20px;
 }
 
-.confettiIcon {
+.welcomeIcon {
   width: 24px;
   height: 24px;
   margin-right: 10px;
 }
 
-.loginTitle h1 {
+.welcomeHeader h1 {
   font-size: 28px;
   color: #0bc5ea;
 }
 
-.inputContainer {
+.loginSubtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #aaa;
+  margin-top: 10px;
+  padding-bottom: 5%;
+}
+
+.fieldContainer {
   width: 100%;
   margin-bottom: 15px;
 }
 
-.label {
+.fieldLabel {
   font-size: 14px;
   color: #ccc;
   margin-bottom: 5px;
   display: block;
 }
 
-.inputWithIcon {
+.inputWrapper {
   display: flex;
   align-items: center;
   background-color: #1a1a1a;
@@ -65,7 +73,7 @@
   padding: 10px;
 }
 
-.inputField {
+.input {
   flex: 1;
   padding: 10px;
   border: none;
@@ -74,13 +82,13 @@
   font-size: 16px;
 }
 
-.icon {
+.iconImage {
   width: 24px;
   height: 24px;
   margin-right: 10px;
 }
 
-.passwordLabelContainer {
+.passwordLabelWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,29 +112,20 @@
   background-color: #00a3c4;
 }
 
-.textLinkRight {
-  color: #0bc5ea;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.linkCenter {
+.centeredLink {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-.textLinkCenter {
+.centeredTextLink {
   color: #0bc5ea;
   font-size: 14px;
   cursor: pointer;
 }
 
-.loginDescription {
-  text-align: center;
-  font-size: 16px;
-  color: #aaa;
+.errorMessage {
+  color: red;
+  font-size: 14px;
   margin-top: 10px;
-  padding-bottom: 5%;
 }
-

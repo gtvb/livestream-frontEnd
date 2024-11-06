@@ -20,3 +20,4 @@ yarn dev
 ```
 
 4. Após iniciar o servidor, abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver a aplicação em funcionamento.
+

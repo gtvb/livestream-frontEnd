@@ -1,33 +1,29 @@
-/* Estilização geral */
-.signUp {
-  height: 100vh; /* Altura total da tela */
+.signupContainer {
+  height: 100vh; 
   display: flex;
   background-color: #fff;
 }
 
-/* Estilização da imagem de fundo */
-.image {
-  width: 50%; /* Metade da tela */
-  height: 100%; /* Altura total da tela */
-  background-image: url('/assets/images/image2.png'); /* Caminho da sua imagem */
+.imageBanner {
+  width: 50%; 
+  height: 100%; 
+  background-image: url('/assets/images/signup_banner.png');
   background-size: cover;
   background-position: center;
 }
 
-/* Estilização do formulário */
-.frameParent {
+.formContainer {
   width: 50%;
   padding: 64px;
   background-color: #080808;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centraliza verticalmente */
+  justify-content: center; 
   align-items: center;
   gap: 24px;
 }
 
-/* Estilização dos textos e ícones do formulário */
-.boldDuotoneFacesEmotionsParent {
+.signupHeader {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,27 +33,26 @@
   font-size: 24px;
 }
 
-.crieSuaConta {
+.createAccountText {
   font-size: 24px;
   color: #ffffff;
   font-weight: 600;
 }
 
-.entreComSeu {
+.subHeaderText {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.64);
   line-height: 1.5;
 }
 
-/* Estilização dos campos de entrada */
-.usurioParent {
+.inputGroup {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.userParent {
+.inputFieldContainer {
   width: 100%;
   padding: 16px;
   background-color: #171923;
@@ -69,21 +64,20 @@
   gap: 12px;
 }
 
-.userIcon {
+.icon {
   width: 20px;
   height: 20px;
 }
 
-.digiteSeuNome {
+.inputField {
   flex-grow: 1;
   background: none;
   border: none;
-  color: #a0aec0;
+  color: white;
   outline: none;
 }
 
-/* Botão Criar Conta */
-.criarContaWrapper {
+.submitButtonContainer {
   width: 40%;
   background-color: #00b5d8;
   padding: 16px;
@@ -95,8 +89,7 @@
   cursor: pointer;
 }
 
-/* Link "Já possuo uma conta" */
-.jPossuoUma {
+.loginLink {
   color: #0bc5ea;
   font-size: 14px;
   text-align: center;
