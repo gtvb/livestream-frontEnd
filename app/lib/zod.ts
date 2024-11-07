@@ -34,6 +34,12 @@ export const signupSchema = z.object({
   }
 });
 
+export const createLiveStreamSchema = z.object({
+  name: z.string({ required_error: "Name is required" })
+    .min(1, "Name is required")
+})
+
+
 export const liveStreamSchema = z.object({
   id: z.string().optional(), // ObjectID as string for JSON serialization
   name: z.string(),

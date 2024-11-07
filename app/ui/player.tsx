@@ -26,6 +26,7 @@ const Player = (props: PlayerProps) => {
 
     // our video.js player
     const player = videojs(videoEl, props);
+    player.play()
 
     return () => {
       player.dispose();

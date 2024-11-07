@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import styles from './login.module.css';
 import { login } from '@/app/lib/actions';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormState } from 'react-dom';
 
 const initialState = {
   message: '',
@@ -11,7 +11,6 @@ const initialState = {
 
 export default function Login() {
   const [state, formAction] = useFormState(login, initialState)
-  const { pending } = useFormStatus()
 
   return (
     <div className={styles.loginPage}>
@@ -57,7 +56,7 @@ export default function Login() {
         </div>
 
         <p aria-live="polite" style={{color: "red"}}>{state?.message}</p>
-        <button className={styles.loginButton} disabled={pending} type="submit">Entrar</button>
+        <button className={styles.loginButton} type="submit">Entrar</button>
 
         <div className={styles.centeredLink}>
           <Link href="/signup" passHref>

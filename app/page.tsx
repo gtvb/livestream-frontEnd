@@ -1,14 +1,6 @@
-import { signOut } from "@/auth";
-
-const App = () => {
+export default function Page() {
   return (
     <div>
-      <button onClick={async () => {
-        "use server"
-        await signOut()
-      }}>Logout</button>
     </div>
   );
 }
-
-export default App;

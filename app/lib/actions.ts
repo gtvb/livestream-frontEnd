@@ -1,9 +1,8 @@
 "use server"
 
-import { signIn } from "@/auth"
+import { auth, signIn } from "@/auth"
 import { AuthError } from "next-auth"
-import { liveStreamsArraySchema, loginSchema, signupSchema } from "./zod"
-import { redirect } from "next/navigation"
+import { createLiveStreamSchema, liveStreamsArraySchema, loginSchema, signupSchema } from "./zod"
 
 export async function login(prevState: { message: string | undefined }, formData: FormData) {
     try {
@@ -32,11 +31,11 @@ export async function login(prevState: { message: string | undefined }, formData
 
 export async function signup(prevState: { message: string | undefined }, formData: FormData) {
     try {
-        const credentials = signupSchema.safeParse({ 
+        const credentials = signupSchema.safeParse({
             username: formData.get("username"),
-            email: formData.get("email"), 
+            email: formData.get("email"),
             password: formData.get("password"),
-            confirmPassword: formData.get("confirmPassword") 
+            confirmPassword: formData.get("confirmPassword")
         })
         if (!credentials.success) {
             return { message: "Algum campo está incorreto, tente novamente" }
@@ -46,9 +45,9 @@ export async function signup(prevState: { message: string | undefined }, formDat
         await fetch("http://localhost:3333/user/signup", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({username, email, password})
+            body: JSON.stringify({ username, email, password })
         })
-    
+
         await signIn("credentials", { email, password, redirectTo: "/dashboard" })
 
         return { message: "Login feito com sucesso" }
@@ -66,6 +65,41 @@ export async function signup(prevState: { message: string | undefined }, formDat
     }
 }
 
+export async function createLiveStream(prevState: { message: string | undefined }, formData: FormData) {
+    const session = await auth()
+    if (!session || !session.user?.id) {
+        throw new Error("Usuário não autenticado")
+    }
+
+    const credentials = createLiveStreamSchema.safeParse({
+        name: formData.get("name"),
+    })
+
+    if (!credentials.success) {
+        return { message: "Algum campo está incorreto, tente novamente" }
+    }
+
+    const { name } = credentials.data
+    await fetch("http://localhost:3333/livestreams/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ "user_id": session.user.id, name })
+    })
+
+    return { message: "Success" }
+}
+
+export async function setLive(streamId: string, status: boolean) {
+    const response = await fetch(`http://localhost:3333/livestreams/update/${streamId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ "live_stream_status": status })
+    })
+
+    if (!response.ok) {
+        throw new Error("Houve um erro ao atualizar a stream")
+    }
+}
 
 export async function fetchLivestreams() {
     // TODO: talvez tirar o no-store
