@@ -11,14 +11,22 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth;
-      const isOnDashboard = nextUrl.pathname.startsWith("/dashboard")
-      if (isOnDashboard) {
-        if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
-      } else if (isLoggedIn) {
-        return Response.redirect(new URL('/dashboard', nextUrl));
+      const redirectablePaths = ["/signup", "/login"];
+      const currentPath = nextUrl.pathname;
+
+      if (isLoggedIn) {
+        // If the user is logged in and tries to access /login or /signup, redirect to /dashboard
+        if (redirectablePaths.includes(currentPath)) {
+          return Response.redirect(new URL("/dashboard", nextUrl));
+        }
+        return true;
+      } else {
+        // If the user is not logged in and tries to access protected pages, redirect to /login
+        if (!redirectablePaths.includes(currentPath)) {
+          return Response.redirect(new URL("/login", nextUrl));
+        }
+        return true;
       }
-      return true;
     },
     async session({ session, token }) {
       // @ts-ignore

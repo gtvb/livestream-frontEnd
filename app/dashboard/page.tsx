@@ -1,18 +1,20 @@
-import { auth, signOut } from "@/auth";
+import { signOut } from "@/auth";
+import { fetchLivestreams } from "@/app/lib/actions";
+import Slider from "../ui/slider";
 
 export default async function Dashboard() {
-    const session = await auth()
+    const livestreams = await fetchLivestreams()
+
     return (
         <div>
-
             <form action={async () => {
                 "use server"
-                await signOut()
+                await signOut({redirectTo: "/login"})
             }}>
                 <button>Sign out</button>
             </form>
 
-            <p>{JSON.stringify(session)}</p>
+            <Slider livestreams={livestreams}></Slider>
         </div>
     );
 }

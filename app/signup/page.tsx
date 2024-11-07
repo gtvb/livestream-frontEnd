@@ -1,25 +1,16 @@
-import { redirect } from 'next/navigation';
+"use client"
+
+import { useFormState } from 'react-dom';
 import styles from './signup.module.css';
 import Link from 'next/link';
+import { signup } from '../lib/actions';
+
+const initialState = {
+  message: '',
+}
 
 export default function Signup() {
-  async function signup(formData: FormData) {
-    "use server"
-
-    // Make the creation request
-    const response = await fetch("http://localhost:3333/users/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData)
-    })
-
-    if (!response.ok) {
-      return { message: "There was an error processing this request" }
-    }
-
-    // Make him log in
-    redirect("/login")
-  }
+  const [state, formAction] = useFormState(signup, initialState)
 
   return (
     <div className={styles.signupContainer}>
@@ -35,7 +26,7 @@ export default function Signup() {
         </div>
 
         {/* Form inputs */}
-        <form className={styles.inputForm} action={signup}>
+        <form className={styles.inputForm} action={formAction}>
           <div className={styles.inputGroup}>
             <label className={styles.inputLabel}>Usuário</label>
             <div className={styles.inputFieldContainer}>
@@ -61,10 +52,12 @@ export default function Signup() {
             <label className={styles.inputLabel}>Confirme sua senha</label>
             <div className={styles.inputFieldContainer}>
               <img className={styles.icon} alt="" src="/assets/images/shield.svg" />
-              <input className={styles.inputField} type="password" placeholder="Digite sua senha novamente" name="password_repeat" />
+              <input className={styles.inputField} type="password" placeholder="Digite sua senha novamente" name="confirmPassword" />
             </div>
           </div>
 
+
+          <p aria-live="polite" style={{ color: "red" }}>{state?.message}</p>
           <div className={styles.submitButtonContainer}>
             <button type="submit" className={styles.submitButton}>Criar conta</button>
           </div>

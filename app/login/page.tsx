@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import styles from './login.module.css';
-import { login } from '@/lib/actions';
+import { login } from '@/app/lib/actions';
 import { useFormState, useFormStatus } from 'react-dom';
 
 const initialState = {
@@ -57,7 +57,7 @@ export default function Login() {
         </div>
 
         <p aria-live="polite" style={{color: "red"}}>{state?.message}</p>
-        <button className={styles.loginButton} disabled={pending} type="submit">{pending ? "Carregando..." : "Entrar"}</button>
+        <button className={styles.loginButton} disabled={pending} type="submit">Entrar</button>
 
         <div className={styles.centeredLink}>
           <Link href="/signup" passHref>
