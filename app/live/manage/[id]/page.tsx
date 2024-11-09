@@ -1,64 +1,47 @@
-"use client"
+import { liveStreamSchema } from "@/app/lib/zod";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+import  ToggleButton  from "./toggleButton";
+import Player from "@/app/ui/player";
 
-import { setLive } from "@/app/lib/actions"
-import { liveStreamSchema } from "@/app/lib/zod"
-import Player from "@/app/ui/player"
-import { useEffect, useState } from "react"
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+    const session = await auth();
+    if (!session) {
+        redirect("/login");
+    }
 
-export default function Page({ params }: { params: { id: string } }) {
-    const [isLive, setIsLive] = useState<boolean>(false)
-    const [livestream, setLivestream] = useState<any>(null)
-    const [loading, setLoading] = useState<boolean>(true)
+    const id = (await params).id;
+    const response = await fetch(`http://localhost:3333/livestreams/info/${id}`);
+    const data = await response.json();
 
-    useEffect(() => {
-        async function fetchLiveStream() {
-            try {
-                const response = await fetch(`http://localhost:3333/livestreams/info/${params.id}`)
-                const data = await response.json()
-                const parsedData = await liveStreamSchema.parseAsync(data["livestream"])
-                setLivestream(parsedData)
-            } catch (error) {
-                console.error("Failed to fetch livestream data:", error)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        fetchLiveStream()
-    }, [params.id])
-
-    if (loading) return <p>Loading...</p>
-    if (!livestream) return <p>Failed to load livestream data</p>
+    const livestream = await liveStreamSchema.parseAsync(data["livestream"]);
+    if (livestream.publisher_id !== session.user?.id) {
+        redirect("/dashboard");
+    }
 
     return (
         <div>
-            <p>Live {params.id}</p>
+            <p>Id: {livestream.id}</p>
+            <p>Name: {livestream.name}</p>
+            <p>Stream Key: {livestream.stream_key}</p>
+            <p>Status: {livestream.live_stream_status ? "On" : "Off"}</p>
+
+            <ToggleButton serverAction={async () => {
+                "use server"
+                await fetch(`http://localhost:3333/livestreams/update/${id}`, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ live_stream_status: !livestream.live_stream_status }),
+                });
+            }} status={livestream.live_stream_status} />
+
             {livestream.live_stream_status ? (
-                <Player
-                    autoplay={true}
-                    techOrder={["html5"]}
-                    controls={true}
-                    sources={[
-                        { src: `http://localhost:8000/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }
-                    ]}
-                />
+                <Player techOrder={["html5"]} autoplay={true} controls={true} sources={[{ src: `http://localhost:8000/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }]} />
             ) : (
-                <p>Go live in OBS to watch the video!</p>
+                <p>No video. Start a stream on OBS to get some video and start the stream</p>
             )}
-
-            <div>
-                <p>Stream Name: {livestream.name}</p>
-                <p>Stream status: {livestream.live_stream_status ? "On" : "Off"}</p>
-                <p>Stream ID: {livestream.id}</p>
-                <p>Stream Key: {livestream.stream_key}</p>
-            </div>
-
-            <button onClick={() => {
-                setLive(livestream.id, !isLive)
-                setIsLive(!isLive)
-            }}>
-                {isLive ? "End Live" : "Go live!"}
-            </button>
         </div>
-    )
+    );
 }

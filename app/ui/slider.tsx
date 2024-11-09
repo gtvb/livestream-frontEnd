@@ -26,37 +26,43 @@ const Slider: React.FC<SliderProps> = ({ livestreams }) => {
         }
     };
 
-    const currentStream = livestreams[currentIndex];
+    const currentStream = livestreams.length ? livestreams[currentIndex] : null;
 
     return (
         <div style={{ textAlign: 'center' }}>
-            <div style={{ border: '1px solid #ccc', padding: '20px', marginBottom: '10px' }}>
-                {/* Fake video element */}
-                <div style={{
-                    width: '100%',
-                    height: '300px',
-                    backgroundColor: '#000',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#fff',
-                    fontSize: '1.5rem'
-                }}>
-                    {currentStream.name}
-                </div>
-                <p>Viewer Count: {currentStream.viewer_count}</p>
-                <p>Status: {currentStream.live_stream_status ? 'Live' : 'Offline'}</p>
-                <p>Published by: {currentStream.publisher_id}</p>
-            </div>
+            {currentStream === null ? (
+                <p>No livestreams found</p>
+            ) : (
+                <>
+                    <div style={{ border: '1px solid #ccc', padding: '20px', marginBottom: '10px' }}>
+                        {/* Fake video element */}
+                        <div style={{
+                            width: '100%',
+                            height: '300px',
+                            backgroundColor: '#000',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#fff',
+                            fontSize: '1.5rem'
+                        }}>
+                            {currentStream.name}
+                        </div>
+                        <p>Id: {currentStream.id}</p>
+                        <p>Viewer Count: {currentStream.viewer_count}</p>
+                        <p>Status: {currentStream.live_stream_status ? 'Live' : 'Offline'}</p>
+                        <p>Published by: {currentStream.publisher_id}</p>
+                    </div>
 
-            {/* Navigation Buttons */}
-            <button onClick={handlePrev} disabled={currentIndex === 0}>
-                Previous
-            </button>
-            <button onClick={handleNext} disabled={currentIndex === livestreams.length - 1}>
-                Next
-            </button>
-            <Link href={`/live/${currentStream.id}`}>Watch</Link>
+                    <button onClick={handlePrev} disabled={currentIndex === 0}>
+                        Previous
+                    </button>
+                    <button onClick={handleNext} disabled={currentIndex === livestreams.length - 1}>
+                        Next
+                    </button>
+                    <Link href={`/live/${currentStream.id}`}>Watch</Link>
+                </>
+            )}
         </div>
     );
 };

@@ -3,6 +3,7 @@
 import { auth, signIn } from "@/auth"
 import { AuthError } from "next-auth"
 import { createLiveStreamSchema, liveStreamsArraySchema, loginSchema, signupSchema } from "./zod"
+import { redirect } from "next/navigation"
 
 export async function login(prevState: { message: string | undefined }, formData: FormData) {
     try {
@@ -80,13 +81,17 @@ export async function createLiveStream(prevState: { message: string | undefined 
     }
 
     const { name } = credentials.data
-    await fetch("http://localhost:3333/livestreams/create", {
+    const response = await fetch("http://localhost:3333/livestreams/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ "user_id": session.user.id, name })
     })
+    if (!response.ok) {
+        return { message: "Não foi possível criar a stream"}  
+    }
 
-    return { message: "Success" }
+    const data = await response.json()
+    redirect(`/live/manage/${data["stream_id"]}`)
 }
 
 export async function setLive(streamId: string, status: boolean) {
