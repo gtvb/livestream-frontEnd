@@ -36,13 +36,15 @@ export const signupSchema = z.object({
 
 export const createLiveStreamSchema = z.object({
   name: z.string({ required_error: "Name is required" })
-    .min(1, "Name is required")
+    .min(1, "Name is required"),
+  thumbnail: z.string({ required_error: "Thumbnail is required" })
 })
 
 
 export const liveStreamSchema = z.object({
   id: z.string().optional(), // ObjectID as string for JSON serialization
   name: z.string(),
+  thumbnail: z.string(),
 
   stream_key: z.string(),
   viewer_count: z.number().int(),
@@ -64,6 +66,6 @@ export const userSchema = z.object({
 
   following: z.array(z.string()), // Array of ObjectIDs as strings
 
-  created_at: z.date(),
-  updated_at: z.date(),
+  created_at: z.coerce.date(),
+  updated_at: z.coerce.date(),
 });

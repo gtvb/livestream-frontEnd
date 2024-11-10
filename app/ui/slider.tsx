@@ -35,19 +35,7 @@ const Slider: React.FC<SliderProps> = ({ livestreams }) => {
             ) : (
                 <>
                     <div style={{ border: '1px solid #ccc', padding: '20px', marginBottom: '10px' }}>
-                        {/* Fake video element */}
-                        <div style={{
-                            width: '100%',
-                            height: '300px',
-                            backgroundColor: '#000',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: '#fff',
-                            fontSize: '1.5rem'
-                        }}>
-                            {currentStream.name}
-                        </div>
+                        { currentStream.thumbnail ? <img src={currentStream.thumbnail} alt={currentStream.name} style={{ width: '100%' }} /> : null }
                         <p>Id: {currentStream.id}</p>
                         <p>Viewer Count: {currentStream.viewer_count}</p>
                         <p>Status: {currentStream.live_stream_status ? 'Live' : 'Offline'}</p>

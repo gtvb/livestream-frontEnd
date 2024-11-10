@@ -15,6 +15,7 @@ export default function Page() {
             <h2>Criar uma nova Live</h2>
             <form action={formAction}>
                 <input name="name" placeholder="Nome da sua LiveStream" />
+                <input type="file" name="thumbnail" accept="image/*" />
 
                 <p aria-live="polite" style={{ color: "red" }}>{state?.message}</p>
                 <button type="submit">Criar</button>

@@ -72,22 +72,24 @@ export async function createLiveStream(prevState: { message: string | undefined 
         throw new Error("Usuário não autenticado")
     }
 
-    const credentials = createLiveStreamSchema.safeParse({
-        name: formData.get("name"),
-    })
+    // const credentials = createLiveStreamSchema.safeParse({
+    //     name: formData.get("name"),
+    // })
 
-    if (!credentials.success) {
-        return { message: "Algum campo está incorreto, tente novamente" }
-    }
+    // if (!credentials.success) {
+    //     return { message: "Algum campo está incorreto, tente novamente" }
+    // }
 
-    const { name } = credentials.data
+    // const { name } = credentials.data
+
+    formData.append("publisher_id", session.user.id)
     const response = await fetch("http://localhost:3333/livestreams/create", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ "user_id": session.user.id, name })
+        body: formData
     })
+
     if (!response.ok) {
-        return { message: "Não foi possível criar a stream"}  
+        return { message: "could not create stream" }  
     }
 
     const data = await response.json()
