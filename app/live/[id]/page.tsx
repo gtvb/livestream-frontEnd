@@ -16,14 +16,7 @@ export default async function Page({
   return (
     <div>
       <p>Live</p>
-      {/* <Player
-        autoplay={true}
-        techOrder={["html5"]}
-        controls={true}
-        sources={
-          [{ src: `http://localhost:8000/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }]
-        }
-      /> */}
+      <Player techOrder={["html5"]} autoplay={true} controls={true} sources={[{ src: `http://localhost:8000/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }]} />
       <Link href={"/dashboard"}>Back to dashboard</Link>
     </div>
   )

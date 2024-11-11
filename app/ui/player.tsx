@@ -40,7 +40,7 @@ const Player = (props: PlayerProps) => {
       }
     });
 
-    player.play();
+    // player.play();
 
     return () => {
       player.dispose();
@@ -53,7 +53,7 @@ const Player = (props: PlayerProps) => {
 
   return (
     <>
-      <div data-vjs-player style={{width: 600, height: 400}}>
+      <div data-vjs-player>
         <video ref={onVideo} className="video-js" playsInline />
       </div>
     </>

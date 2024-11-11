@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import  ToggleButton  from "./toggleButton";
 import Player from "@/app/ui/player";
+import { revalidatePath } from "next/cache";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
     const session = await auth();
@@ -35,6 +36,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                     },
                     body: JSON.stringify({ live_stream_status: !livestream.live_stream_status }),
                 });
+
+                revalidatePath("/live/manage/[id]");
             }} status={livestream.live_stream_status} />
 
             {livestream.live_stream_status ? (

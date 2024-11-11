@@ -9,7 +9,6 @@ export default function ToggleButton({ serverAction, status }: { serverAction: (
     return (
         <button onClick={() => {
             serverAction();
-            router.refresh();
         }}>
             {status ? "Stop" : "Start"}
         </button>
