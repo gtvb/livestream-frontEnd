@@ -1,0 +1,58 @@
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: #0d0d0d;
+    color: #fff;
+}
+
+.sectionTitle {
+    font-size: 24px;
+    color: #0bc5ea;
+    margin-bottom: 20px;
+}
+
+.userInfo, .streamSection {
+    width: 100%;
+    max-width: 800px;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.streamList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.streamItem {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.thumbnail {
+    width: 120px;
+    height: 90px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.streamInfo {
+    flex-grow: 1;
+}
+
+.manageLink {
+    color: #0bc5ea;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.manageLink:hover {
+    text-decoration: underline;
+}

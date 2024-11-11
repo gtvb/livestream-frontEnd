@@ -1,9 +1,9 @@
 "use client"
 
-import Link from 'next/link'
-import styles from './login.module.css';
-import { login } from '@/app/lib/actions';
+import { login } from '@/src/app/lib/actions';
+import Link from 'next/link';
 import { useFormState } from 'react-dom';
+import styles from './index.module.css';
 
 const initialState = {
   message: '',

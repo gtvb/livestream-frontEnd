@@ -1,0 +1,67 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: #0d0d0d;
+    height: 100vh;
+    color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 24px;
+    color: #0bc5ea;
+}
+
+.signOutButton {
+    background-color: #0bc5ea;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signOutButton:hover {
+    background-color: #00a3c4;
+}
+
+.content {
+    width: 100%;
+    max-width: 800px;
+}
+
+.link {
+    color: #0bc5ea;
+    font-size: 16px;
+    margin-bottom: 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.sliderContainer {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.sliderTitle {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 15px;
+}
