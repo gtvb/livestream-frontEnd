@@ -1,9 +1,12 @@
 .page {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Alinha o header e o container verticalmente */
+    align-items: center; /* Centraliza o container horizontalmente */
+    justify-content: center; /* Centraliza o container verticalmente */
     height: 100vh;
-    background-color: #0d0d0d; /* Fundo escuro */
+    background-color: #000;
+    padding: 0; /* Remover padding para garantir alinhamento */
+    margin: 0;
 }
 
 .container {
@@ -12,6 +15,7 @@
     border-radius: 10px;
     width: 400px;
     text-align: center;
+    margin: 0 auto; /* Garante centralização horizontal */
 }
 
 .titleSection {
@@ -88,4 +92,75 @@
 
 .submitButton:hover {
     background-color: #00a3c4;
+}
+
+.header {
+    position: absolute; /* Usar position: absolute em vez de fixed */
+    top: 0; /* Fixar na parte superior */
+    left: 0; /* Fixar no lado direito */
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px; /* Um pouco de padding para o header não encostar na borda */
+    width: auto; /* Alterar largura para auto, assim só ocupa o necessário */
+}
+
+
+
+.header img {
+    width: 150px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+}
+
+
+.inputContainer {
+    text-align: left;
+}
+
+/* Específico para o contêiner da thumbnail */
+.inputContainer.thumbnailContainer {
+    width: 100%;
+    max-width: 500px;
+    height: 150px;
+}
+
+.fileInputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+    flex-direction: column; /* Coloca o ícone e o texto em coluna */
+}
+
+/* Ícone da galeria */
+.galleryIcon {
+    width: 36px; /* Ajuste o tamanho do ícone conforme necessário */
+    height: 36px;
+    margin-bottom: 8px; /* Espaço entre o ícone e o texto */
+    pointer-events: none;
+    color: #bbb;
+}
+
+/* Estilo para o texto de instrução */
+.fileInputWrapper::before {
+    content: "Clique para escolher ou arraste um arquivo pra cá.";
+    color: #999;
+    font-size: 14px;
+    pointer-events: none; /* Garante que o texto não bloqueie o clique no input */
+}
+
+/* Input de arquivo invisível */
+.fileInput {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
 }
