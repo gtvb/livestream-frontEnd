@@ -1,62 +1,55 @@
 "use client"
 
-import { z } from "zod"
-import React, { useState } from 'react';
-import { liveStreamSchema } from "../lib/zod";
-import Link from "next/link";
-import styles from "./index.module.css"
+import { useState } from 'react';
+import styles from '../styles/navigator.module.css';
+import { LiveStream } from '../lib/zod';
+import { useRouter } from 'next/navigation';
 
-type LiveStream = z.infer<typeof liveStreamSchema>;
-
-interface SliderProps {
-    livestreams: LiveStream[];
-}
-
-const Slider: React.FC<SliderProps> = ({ livestreams }) => {
+export default function LivestreamNavigator({ livestreams }: { livestreams: LiveStream[] }) {
+    const router = useRouter();
     const [currentIndex, setCurrentIndex] = useState(0);
+    const currentStream = livestreams[currentIndex];
 
     const handleNext = () => {
-        if (currentIndex < livestreams.length - 1) {
-            setCurrentIndex(currentIndex + 1);
-        }
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % livestreams.length);
     };
 
     const handlePrev = () => {
-        if (currentIndex > 0) {
-            setCurrentIndex(currentIndex - 1);
-        }
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + livestreams.length) % livestreams.length);
     };
 
-    const currentStream = livestreams.length ? livestreams[currentIndex] : null;
-
     return (
-        <div style={{ textAlign: 'center' }}>
-            {currentStream === null ? (
-                <p>No livestreams found</p>
-            ) : (
+        <div className={styles.navigatorContainer}>
+            {livestreams.length == 0 ? (<div className=''>No streams found...</div>) : (
                 <>
-                    <div style={{ border: '1px solid #ccc', padding: '20px', marginBottom: '10px' }}>
-                        { currentStream.thumbnail ? <img src={currentStream.thumbnail} alt={currentStream.name} style={{ width: '100%' }} /> : null }
-                        <p>Id: {currentStream.id}</p>
-                        <p>Viewer Count: {currentStream.viewer_count}</p>
-                        <p>Status: {currentStream.live_stream_status ? 'Live' : 'Offline'}</p>
-                        <p>Published by: {currentStream.publisher_id}</p>
+                    <div className={styles.arrowContainer} onClick={handlePrev}>
+                        <img className={styles.arrowleftIcon} alt="" src="/assets/images/Vector.png" />
                     </div>
 
-                    <button onClick={handlePrev} disabled={currentIndex === 0}>
-                        <img  className={styles.arrowleftIcon} alt="" src="/assets/images/Vector.png" />
-                    </button>
+                    <div className={styles.centeredContainer}>
+                        <div className={styles.imageContainer}>
+                            <img src={currentStream.thumbnail} alt="" className={styles.image} onClick={() => router.push(`/live/${currentStream.id}`)} />
+                        </div>
+                        <div className={styles.infoContainer}>
+                            <h1>{currentStream.name}</h1>
+                            <hr style={{ color: "lightgrey", height: "1px", opacity: "0.25", margin: "15px 0px" }} />
+                            <div className={styles.accountDetails}>
+                                <div className={styles.userInfo}>
+                                    <h4>Nome do usuário</h4>
+                                    &bull;
+                                    <p>4.2k assistindo</p>
+                                </div>
 
-                    <Link href={`/live/${currentStream.id}`}>Watch</Link>
+                                <button className='btn' style={{ borderRadius: "16px" }}>Seguir</button>
+                            </div>
+                        </div>
+                    </div>
 
-                    <button onClick={handleNext} disabled={currentIndex === livestreams.length - 1}>
-                        <img  className={styles.arrowrightIcon} alt="" src="/assets/images/VectorRight.png" />
-                    </button>
-                    
+                    <div className={styles.arrowContainer} onClick={handleNext}>
+                        <img className={styles.arrowrightIcon} alt="" src="/assets/images/VectorRight.png" />
+                    </div>
                 </>
             )}
         </div>
     );
-};
-
-export default Slider;
+}

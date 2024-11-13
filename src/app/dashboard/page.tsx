@@ -1,46 +1,38 @@
-import { auth, signOut } from "@/auth"
-import { fetchLivestreams } from "@/src/app/lib/actions"
-import Link from "next/link"
-import Slider from "../ui/slider"
-import styles from "./index.module.css"
+import { fetchLivestreams } from "@/src/app/lib/actions";
+import styles from "./index.module.css";
+import LivestreamNavigator from "../ui/slider";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default async function Dashboard() {
     const session = await auth()
-    const livestreams = await fetchLivestreams()
+    const livestreams = await fetchLivestreams();
+
+    if (!session) {
+        redirect("/login")
+    }
 
     return (
-        <div className={styles.dashboard}>
-            <img className={styles.blurIcon} alt="Blur" src="/assets/images/blur.png" />
-            <div className={styles.header}>
-                <h2 className={styles.title}>Bem-vindo ao seu Dashboard</h2>
-                <form action={async () => {
-                    "use server"
-                    await signOut({ redirectTo: "/live/create" });
-                }}>
-                    <button className={styles.createLiveButton}>
-                    <img  className={"styles.videoCamera"} alt="" src="/assets/images/VideoCamera.png" />
-                        Criar Live
-                    </button>
-                </form>
-
-                <form action={async () => {
-                    "use server"
-                    await signOut({ redirectTo: "/login" });
-                }}>
-                    <button className={styles.signOutButton}>Sair</button>
-                </form>
-            </div>
-
-            <div className={styles.content}>
-                <Link href={"/profile"} className={styles.profileButton}>
-                    Acessar Perfil
-                </Link>
-
-                <div className={styles.sliderContainer}>
-                    <h3 className={styles.sliderTitle}>Suas Lives</h3>
-                    <Slider livestreams={livestreams} />
+        <div className={styles.mainContainer}>
+            <div className={styles.feedNav}>
+                <div className={styles.feedNavSection}>
+                    <div className={styles.navGreeting}>
+                        <p>
+                            { /* @ts-ignore */ }
+                            Olá, <Link href={`/profile`}>{session.user["username"]}</Link>
+                        </p>
+                    </div>
+                    <div className={styles.navActions}>
+                        <Link href={"/dashboard"} className={"nav-btn"}>Seguindo</Link>
+                        <Link href={"/dashboard"} className={"nav-btn"}>Explorar</Link>
+                    </div>
+                    <div className={styles.navCreate}>
+                        <Link href={"/live/create"} className={"btn"} style={{borderRadius: "8px"}}>Criar Live</Link>
+                    </div>
                 </div>
             </div>
+            <LivestreamNavigator livestreams={livestreams} />
         </div>
-    )
+    );
 }

@@ -56,6 +56,8 @@ export const liveStreamSchema = z.object({
   updated_at: z.coerce.date(),
 });
 
+export type LiveStream = z.infer<typeof liveStreamSchema>
+
 export const liveStreamsArraySchema = z.array(liveStreamSchema)
 
 export const userSchema = z.object({

@@ -100,6 +100,56 @@ a {
   text-decoration: none;
 }
 
+.btn {
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #0a2a34; 
+  color: #50c5ea; 
+  border: 1px solid #50c5ea; 
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background-color: #08242c; 
+}
+
+.btn:active {
+  transform: scale(0.98); 
+}
+
+.btn:disabled {
+  background-color: #4d4d4d; 
+  color: #b0b0b0; 
+  cursor: not-allowed;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+  padding: 0.5rem 1rem;
+  background-color: transparent; 
+  color: #5c5c5c; 
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.nav-btn:hover {
+  color: #50c5ea; 
+}
+
+.nav-btn.active {
+  color: #50c5ea; 
+  border-bottom: 2px solid #50c5ea; 
+}
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -1,126 +1,70 @@
-.dashboard {
+.mainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
-    background-color: #0d0d0d;
+
+    width: 100vw;
     height: 100vh;
-    color: #fff;
-    position:relative;
 }
 
-.blurIcon {
-    position: absolute;
-    bottom: -484px;
-    left: calc(50% - 440px);
-    border-radius: 9999px;
-    width: 880px;
-    height: 880px;
-    object-fit: cover;
-    z-index: 0;
+.feedNav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
 }
 
-.profileButton {
-    background-color: #0bc5ea;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 16px; 
-    font-size: 14px; 
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    transition: background-color 0.3s ease;
+.feedNavSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    width: 60%;
+
+    height: 100%;
 }
 
-.profileButton:hover {
-    background-color: #00a3c4;
-}
-
-
-
-.header {
+.navContent {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 800px;
-    margin-bottom: 20px;
+    width: 80%;
+    max-width: 1200px;
 }
 
-.title {
-    font-size: 24px;
-    color: #0bc5ea;
+.navGreeting {
+    flex: 1;
+    text-align: left;
 }
 
-.signOutButton {
-    background-color: #0bc5ea;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.navGreeting p {
+    font-size: 1.5rem; 
+    color: #5c5c5c; 
+    font-weight: 500;
+    margin: 0; 
+    line-height: 1.2;
 }
 
-.signOutButton:hover {
-    background-color: #00a3c4;
-}
-
-.createLiveButton {
-    background-color: #0bc5ea;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.navActions {
+    flex: 1;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
-.createLiveButton:hover {
-    background-color: #00a3c4;
+.navCreate {
+    flex: 1;
+    text-align: right;
 }
 
-.videoCamera {
-    width: 100px; 
-    margin-right: 100px;
-}
-
-
-.content {
-    width: 100%;
-    max-width: 800px;
-    background-color: #080808;
-    text-align: left;
-    font-size: 14px;
-}
-
-.link {
-    color: #0bc5ea;
-    font-size: 16px;
-    margin-bottom: 20px;
-    display: inline-block;
+.button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
     text-decoration: none;
+    border-radius: 5px;
 }
 
-.link:hover {
-    text-decoration: underline;
-}
-
-.sliderContainer {
-    background-color: #1a1a1a;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.sliderTitle {
-    font-size: 20px;
-    color: #fff;
-    margin-bottom: 15px;
+.button:hover {
+    background-color: #0056b3;
 }

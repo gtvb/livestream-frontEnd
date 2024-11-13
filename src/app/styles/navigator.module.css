@@ -1,0 +1,99 @@
+/* index.module.css */
+.navigatorContainer {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+}
+
+.arrowContainer {
+    width: 25%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrowleftIcon, .arrowrightIcon {
+    width: 60px; /* Adjust size as needed */
+    height: 60px; /* Adjust size as needed */
+
+    padding: 15px;
+    border: 1px solid lightgray;
+    border-radius: 100%;
+
+    cursor: pointer;
+}
+
+.centeredContainer {
+    height: 100%;
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.imageContainer {
+    height: 70%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    max-height: 90%;
+    max-width: 100%;
+    width: auto;
+
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.infoContainer {
+    height: 30%;
+    padding: 10px;
+}
+
+.infoContainer h1 {
+    margin: 0;
+}
+
+.accountDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.userInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userInfo h4 {
+    margin-right: 4px;
+}
+
+.userInfo p {
+    margin-left: 4px;
+    color: #50c5ea;
+}
+
+.followButton {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.followButton:hover {
+    background-color: #0056b3;
+}

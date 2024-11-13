@@ -54,7 +54,7 @@ const Player = (props: PlayerProps) => {
   return (
     <>
       <div data-vjs-player>
-        <video ref={onVideo} className="video-js" playsInline />
+        <video ref={onVideo} className="video-js" playsInline width={600} height={450} />
       </div>
     </>
   );

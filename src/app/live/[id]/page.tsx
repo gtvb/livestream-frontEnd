@@ -21,7 +21,7 @@ export default async function Page({
         <Player
           autoplay={true}
           techOrder={["html5"]}
-          controls={true}
+          controls={false}
           sources={[
             { src: `http://localhost:8000/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" },
           ]}

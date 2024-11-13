@@ -28,6 +28,17 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                 <p><strong>Nome:</strong> {livestream.name}</p>
                 <p><strong>Stream Key:</strong> {livestream.stream_key}</p>
                 <p><strong>Status:</strong> {livestream.live_stream_status ? "Ativa" : "Inativa"}</p>
+
+                <form action={async () => {
+                    "use server"
+                    await fetch(`http://localhost:3333/livestreams/delete/${id}`, {
+                        method: "DELETE",
+                    })
+
+                    redirect("/profile")
+                }}>
+                    <button>Delete Stream</button>
+                </form>
             </div>
 
             <ToggleButton
