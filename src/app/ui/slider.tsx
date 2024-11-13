@@ -4,6 +4,7 @@ import { z } from "zod"
 import React, { useState } from 'react';
 import { liveStreamSchema } from "../lib/zod";
 import Link from "next/link";
+import styles from "./index.module.css"
 
 type LiveStream = z.infer<typeof liveStreamSchema>;
 
@@ -43,12 +44,15 @@ const Slider: React.FC<SliderProps> = ({ livestreams }) => {
                     </div>
 
                     <button onClick={handlePrev} disabled={currentIndex === 0}>
-                        Previous
+                        <img  className={styles.arrowleftIcon} alt="" src="/assets/images/Vector.png" />
                     </button>
-                    <button onClick={handleNext} disabled={currentIndex === livestreams.length - 1}>
-                        Next
-                    </button>
+
                     <Link href={`/live/${currentStream.id}`}>Watch</Link>
+
+                    <button onClick={handleNext} disabled={currentIndex === livestreams.length - 1}>
+                        <img  className={styles.arrowrightIcon} alt="" src="/assets/images/VectorRight.png" />
+                    </button>
+                    
                 </>
             )}
         </div>
