@@ -12,12 +12,17 @@ npm install
 yarn install
 ```
 
-3. Em seguida, inicie o servidor de desenvolvimento.
+4. Gere uma variável de segredo para os serviços de autenticação
+```
+npx auth secret
+```
+
+5. Em seguida, inicie o servidor de desenvolvimento.
 ```
 npm run dev
 # ou
 yarn dev
 ```
 
-4. Após iniciar o servidor, abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver a aplicação em funcionamento.
+6. Após iniciar o servidor, abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver a aplicação em funcionamento.
 
