@@ -5,6 +5,8 @@
     background-color: #1a1a1a;
     border-radius: 8px;
     color: #fff;
+
+    height: 100vh;
 }
 
 .configTitle {
@@ -19,7 +21,8 @@
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
-    line-height: 1.5;
+
+    height: 15%;
 }
 
 .streamInfo p {
@@ -29,6 +32,7 @@
 
 .playerContainer {
     margin-top: 20px;
+    height: 75%;
 }
 
 .noVideoMessage {

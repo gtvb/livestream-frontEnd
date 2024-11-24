@@ -2,42 +2,46 @@
 
 import { useState } from 'react';
 import styles from '../styles/navigator.module.css';
-import { LiveStream } from '../lib/zod';
-import { useRouter } from 'next/navigation';
+import { Feed } from '../lib/zod';
+import Player from './player';
 
-export default function LivestreamNavigator({ livestreams }: { livestreams: LiveStream[] }) {
-    const router = useRouter();
+export default function LivestreamNavigator({ feed }: { feed: Feed }) {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const currentStream = livestreams[currentIndex];
+    const currentStream = feed.livestreams[currentIndex];
+    const currentUser = feed.users[currentIndex];
 
     const handleNext = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % livestreams.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % feed.livestreams.length);
     };
 
     const handlePrev = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + livestreams.length) % livestreams.length);
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + feed.livestreams.length) % feed.livestreams.length);
     };
 
     return (
         <div className={styles.navigatorContainer}>
-            {livestreams.length == 0 ? (<div className=''>No streams found...</div>) : (
+            {feed.livestreams.length == 0 ? (<div className=''>No streams found...</div>) : (
                 <>
                     <div className={styles.arrowContainer} onClick={handlePrev}>
                         <img className={styles.arrowleftIcon} alt="" src="/assets/images/Vector.png" />
                     </div>
 
                     <div className={styles.centeredContainer}>
-                        <div className={styles.imageContainer}>
-                            <img src={currentStream.thumbnail} alt="" className={styles.image} onClick={() => router.push(`/live/${currentStream.id}`)} />
-                        </div>
+                        <Player
+                            thumbnail={currentStream.thumbnail}
+                            techOrder={["html5"]}
+                            autoplay={false}
+                            controls={true}
+                            sources={currentStream.live_stream_status ? [{ src: `http://localhost:8000/hls/${currentStream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
+                        />
                         <div className={styles.infoContainer}>
                             <h1>{currentStream.name}</h1>
                             <hr style={{ color: "lightgrey", height: "1px", opacity: "0.25", margin: "15px 0px" }} />
                             <div className={styles.accountDetails}>
                                 <div className={styles.userInfo}>
-                                    <h4>Nome do usuário</h4>
+                                    <h4>{currentUser.username}</h4>
                                     &bull;
-                                    <p>4.2k assistindo</p>
+                                    <p>{currentStream.viewer_count} assistindo</p>
                                 </div>
 
                                 <button className='btn' style={{ borderRadius: "16px" }}>Seguir</button>

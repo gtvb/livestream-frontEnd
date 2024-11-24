@@ -2,8 +2,10 @@
 
 import { useCallback, useEffect, useState } from "react";
 import videojs from "video.js";
+import styles from "../styles/player.module.css";
 
 interface PlayerProps {
+  thumbnail: string;
   techOrder: string[];
   autoplay: boolean;
   controls: boolean;
@@ -13,10 +15,9 @@ interface PlayerProps {
   }[];
 }
 
-
-const ErrorMessage = ({ message }: { message: string }) => (
-  <div className="error-message">{message}</div>
-);
+// const ErrorMessage = ({ message }: { message: string }) => (
+//   <div className="error-message" hidden={message === ""}>{message}</div>
+// );
 
 const Player = (props: PlayerProps) => {
   const [videoEl, setVideoEl] = useState<HTMLVideoElement | null>(null);
@@ -40,23 +41,22 @@ const Player = (props: PlayerProps) => {
       }
     });
 
-    // player.play();
+    player.on("ready", () => {
+      player.pause();
+      player.poster(props.thumbnail);
+    });
 
     return () => {
-      player.dispose();
+      if (player) {
+          player.dispose();
+      }
     };
   }, [props, videoEl]);
 
-  if (error) {
-    return <ErrorMessage message={error} />;
-  }
-
   return (
-    <>
-      <div data-vjs-player>
-        <video ref={onVideo} className="video-js" playsInline width={600} height={450} />
+      <div className={styles.videoContainer}>
+          <video ref={onVideo} className="video-js" style={{width: "100%", height: "100%", border: "2px solid green"}} />
       </div>
-    </>
   );
 };
 

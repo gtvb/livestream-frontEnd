@@ -37,23 +37,6 @@
     justify-content: center;
 }
 
-.imageContainer {
-    height: 70%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image {
-    max-height: 90%;
-    max-width: 100%;
-    width: auto;
-
-    border-radius: 8px;
-    cursor: pointer;
-}
-
 .infoContainer {
     height: 30%;
     padding: 10px;

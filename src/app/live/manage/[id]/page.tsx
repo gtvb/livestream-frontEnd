@@ -54,16 +54,13 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
             />
 
             <div className={styles.playerContainer}>
-                {livestream.live_stream_status ? (
-                    <Player
-                        techOrder={["html5"]}
-                        autoplay={true}
-                        controls={true}
-                        sources={[{ src: `http://localhost:8000/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }]}
-                    />
-                ) : (
-                    <p className={styles.noVideoMessage}>Nenhum vídeo disponível. Inicie uma transmissão no OBS para visualizar.</p>
-                )}
+                <Player
+                    thumbnail={livestream.thumbnail}
+                    techOrder={["html5"]}
+                    autoplay={false}
+                    controls={true}
+                    sources={livestream.live_stream_status ? [{ src: `http://localhost:8000/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
+                />
             </div>
         </div>
     )

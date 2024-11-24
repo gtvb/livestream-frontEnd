@@ -7,7 +7,7 @@ export default function ToggleButton({ serverAction, status }: { serverAction: (
     const router = useRouter()
 
     return (
-        <button onClick={() => {
+        <button className={"btn"} style={{borderRadius: "8px"}} onClick={() => {
             serverAction();
         }}>
             {status ? "Stop" : "Start"}

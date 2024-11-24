@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default async function Dashboard() {
     const session = await auth()
-    const livestreams = await fetchLivestreams();
+    const feed = await fetchLivestreams();
 
     if (!session) {
         redirect("/login")
@@ -32,7 +32,7 @@ export default async function Dashboard() {
                     </div>
                 </div>
             </div>
-            <LivestreamNavigator livestreams={livestreams} />
+            <LivestreamNavigator feed={feed} />
         </div>
     );
 }

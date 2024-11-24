@@ -2,7 +2,7 @@
 
 import { auth, signIn } from "@/auth"
 import { AuthError } from "next-auth"
-import { createLiveStreamSchema, liveStreamsArraySchema, loginSchema, signupSchema } from "./zod"
+import {  feedSchema, loginSchema, signupSchema } from "./zod"
 import { redirect } from "next/navigation"
 
 export async function login(prevState: { message: string | undefined }, formData: FormData) {
@@ -116,12 +116,13 @@ export async function fetchLivestreams() {
     }
 
     const data = await response.json()
-    if (data["livestreams"] === null) {
+    if (data === null) {
         return []
     }
 
-    const parsed = liveStreamsArraySchema.safeParse(data["livestreams"])
+    const parsed = feedSchema.safeParse(data)
     if (!parsed.success) {
+        console.log(parsed.error)
         throw new Error("Houve um erro ao obter as streams")
     }
 
