@@ -4,6 +4,7 @@ import Player from "@/src/app/ui/player"
 import { redirect } from "next/navigation"
 import styles from "./index.module.css"
 import ToggleButton from "./toggleButton"
+import Link from "next/link"
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
     const session = await auth()
@@ -37,8 +38,19 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
                     redirect("/profile")
                 }}>
-                    <button>Delete Stream</button>
+                    <button className="btn" style={{borderRadius: "8px"}}>Delete Stream</button>
+                    <Link href={"/dashboard"} className="btn" style={{borderRadius: "8px"}}>Dashboard</Link>
                 </form>
+            </div>
+
+            <div className={styles.playerContainer}>
+                <Player
+                    thumbnail={livestream.thumbnail}
+                    techOrder={["html5"]}
+                    autoplay={false}
+                    controls={true}
+                    sources={livestream.live_stream_status ? [{ src: `http://localhost:8000/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
+                />
             </div>
 
             <ToggleButton
@@ -52,16 +64,6 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                 }}
                 status={livestream.live_stream_status}
             />
-
-            <div className={styles.playerContainer}>
-                <Player
-                    thumbnail={livestream.thumbnail}
-                    techOrder={["html5"]}
-                    autoplay={false}
-                    controls={true}
-                    sources={livestream.live_stream_status ? [{ src: `http://localhost:8000/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
-                />
-            </div>
         </div>
     )
 }

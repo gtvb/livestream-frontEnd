@@ -22,7 +22,7 @@
     border-radius: 8px;
     margin-bottom: 20px;
 
-    height: 15%;
+    height: 25%;
 }
 
 .streamInfo p {
@@ -32,7 +32,7 @@
 
 .playerContainer {
     margin-top: 20px;
-    height: 75%;
+    height: 50%;
 }
 
 .noVideoMessage {

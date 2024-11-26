@@ -20,7 +20,7 @@ export default function LivestreamNavigator({ feed }: { feed: Feed }) {
 
     return (
         <div className={styles.navigatorContainer}>
-            {feed.livestreams.length == 0 ? (<div className=''>No streams found...</div>) : (
+            {feed.livestreams.length == 0 ? (<div className="">No streams found...</div>) : (
                 <>
                     <div className={styles.arrowContainer} onClick={handlePrev}>
                         <img className={styles.arrowleftIcon} alt="" src="/assets/images/Vector.png" />

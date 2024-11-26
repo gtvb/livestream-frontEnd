@@ -116,13 +116,12 @@ export async function fetchLivestreams() {
     }
 
     const data = await response.json()
-    if (data === null) {
-        return []
+    if (!data["livestreams"] || !data["users"]) {
+        return { livestreams: [], users: [] }
     }
 
     const parsed = feedSchema.safeParse(data)
     if (!parsed.success) {
-        console.log(parsed.error)
         throw new Error("Houve um erro ao obter as streams")
     }
 
