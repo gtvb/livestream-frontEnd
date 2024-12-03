@@ -20,7 +20,9 @@ export default function LivestreamNavigator({ feed }: { feed: Feed }) {
 
     return (
         <div className={styles.navigatorContainer}>
-            {feed.livestreams.length == 0 ? (<div className=''>No streams found...</div>) : (
+            {feed.livestreams.length == 0 ? (
+                <div className={styles.noStreams}>Sem streams no momento :(</div>
+            ) : (
                 <>
                     <div className={styles.arrowContainer} onClick={handlePrev}>
                         <img className={styles.arrowleftIcon} alt="" src="/assets/images/Vector.png" />
@@ -32,7 +34,7 @@ export default function LivestreamNavigator({ feed }: { feed: Feed }) {
                             techOrder={["html5"]}
                             autoplay={false}
                             controls={true}
-                            sources={currentStream.live_stream_status ? [{ src: `http://localhost:8000/hls/${currentStream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
+                            sources={currentStream.live_stream_status ? [{ src: `${process.env.HLS_URL}/hls/${currentStream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
                         />
                         <div className={styles.infoContainer}>
                             <h1>{currentStream.name}</h1>

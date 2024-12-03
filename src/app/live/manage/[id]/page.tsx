@@ -4,6 +4,7 @@ import Player from "@/src/app/ui/player"
 import { redirect } from "next/navigation"
 import styles from "./index.module.css"
 import ToggleButton from "./toggleButton"
+import Link from "next/link"
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
     const session = await auth()
@@ -12,7 +13,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
     }
 
     const id = (await params).id
-    const response = await fetch(`http://localhost:3333/livestreams/info/${id}`)
+    const response = await fetch(`${process.env.API_URL}/livestreams/info/${id}`)
     const data = await response.json()
 
     const livestream = await liveStreamSchema.parseAsync(data["livestream"])
@@ -31,27 +32,16 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
                 <form action={async () => {
                     "use server"
-                    await fetch(`http://localhost:3333/livestreams/delete/${id}`, {
+                    await fetch(`${process.env.API_URL}/livestreams/delete/${id}`, {
                         method: "DELETE",
                     })
 
                     redirect("/profile")
                 }}>
-                    <button>Delete Stream</button>
+                    <button className="btn" style={{borderRadius: "8px"}}>Delete Stream</button>
+                    <Link href={"/"} className="btn" style={{borderRadius: "8px"}}>Dashboard</Link>
                 </form>
             </div>
-
-            <ToggleButton
-                serverAction={async () => {
-                    "use server"
-                    await fetch(`http://localhost:3333/livestreams/update/${id}`, {
-                        method: "PATCH",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ live_stream_status: !livestream.live_stream_status }),
-                    })
-                }}
-                status={livestream.live_stream_status}
-            />
 
             <div className={styles.playerContainer}>
                 <Player
@@ -59,9 +49,21 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                     techOrder={["html5"]}
                     autoplay={false}
                     controls={true}
-                    sources={livestream.live_stream_status ? [{ src: `http://localhost:8000/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
+                    sources={livestream.live_stream_status ? [{ src: `${process.env.HLS_URL}/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
                 />
             </div>
+
+            <ToggleButton
+                serverAction={async () => {
+                    "use server"
+                    await fetch(`${process.env.API_URL}/livestreams/update/${id}`, {
+                        method: "PATCH",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ live_stream_status: !livestream.live_stream_status }),
+                    })
+                }}
+                status={livestream.live_stream_status}
+            />
         </div>
     )
 }

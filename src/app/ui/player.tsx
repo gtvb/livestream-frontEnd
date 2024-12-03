@@ -55,7 +55,7 @@ const Player = (props: PlayerProps) => {
 
   return (
       <div className={styles.videoContainer}>
-          <video ref={onVideo} className="video-js" style={{width: "100%", height: "100%", border: "2px solid green"}} />
+          <video ref={onVideo} className="video-js" style={{width: "100%", height: "100%"}} />
       </div>
   );
 };

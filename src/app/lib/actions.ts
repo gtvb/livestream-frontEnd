@@ -2,8 +2,9 @@
 
 import { auth, signIn } from "@/auth"
 import { AuthError } from "next-auth"
-import {  feedSchema, loginSchema, signupSchema } from "./zod"
+import { feedSchema, loginSchema, signupSchema } from "./zod"
 import { redirect } from "next/navigation"
+
 
 export async function login(prevState: { message: string | undefined }, formData: FormData) {
     try {
@@ -14,7 +15,7 @@ export async function login(prevState: { message: string | undefined }, formData
         }
 
         const { email, password } = credentials.data
-        await signIn("credentials", { email, password, redirectTo: "/dashboard" })
+        await signIn("credentials", { email, password, redirectTo: "/" })
         return { message: "Login feito com sucesso" }
     } catch (error) {
         if (error instanceof AuthError) {
@@ -43,13 +44,13 @@ export async function signup(prevState: { message: string | undefined }, formDat
         }
 
         const { username, email, password } = credentials.data
-        await fetch("http://localhost:3333/user/signup", {
+        await fetch(`${process.env.API_URL}/user/signup`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, email, password })
         })
 
-        await signIn("credentials", { email, password, redirectTo: "/dashboard" })
+        await signIn("credentials", { email, password, redirectTo: "/" })
 
         return { message: "Login feito com sucesso" }
     } catch (error) {
@@ -83,13 +84,13 @@ export async function createLiveStream(prevState: { message: string | undefined 
     // const { name } = credentials.data
 
     formData.append("publisher_id", session.user.id)
-    const response = await fetch("http://localhost:3333/livestreams/create", {
+    const response = await fetch(`${process.env.API_URL}/livestreams/create`, {
         method: "POST",
         body: formData
     })
 
     if (!response.ok) {
-        return { message: "could not create stream" }  
+        return { message: "could not create stream" }
     }
 
     const data = await response.json()
@@ -97,7 +98,7 @@ export async function createLiveStream(prevState: { message: string | undefined 
 }
 
 export async function setLive(streamId: string, status: boolean) {
-    const response = await fetch(`http://localhost:3333/livestreams/update/${streamId}`, {
+    const response = await fetch(`${process.env.API_URL}/livestreams/update/${streamId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ "live_stream_status": status })
@@ -110,19 +111,20 @@ export async function setLive(streamId: string, status: boolean) {
 
 export async function fetchLivestreams() {
     // TODO: talvez tirar o no-store
-    const response = await fetch(`http://localhost:3333/livestreams/feed`, { cache: "no-store" })
+    const response = await fetch(`${process.env.API_URL}/livestreams/feed`, { cache: "no-store" })
+    const data = await response.json()
+
     if (!response.ok) {
+        console.log(data["message"])
         throw new Error("Houve um erro ao obter as streams")
     }
 
-    const data = await response.json()
-    if (data === null) {
-        return []
+    if (!data["livestreams"] || !data["users"]) {
+        return { livestreams: [], users: [] }
     }
 
     const parsed = feedSchema.safeParse(data)
     if (!parsed.success) {
-        console.log(parsed.error)
         throw new Error("Houve um erro ao obter as streams")
     }
 

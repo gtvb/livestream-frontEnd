@@ -1,35 +1,70 @@
-.formContainer {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Centraliza o conteúdo */
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
 }
-.formGroup {
-  margin-bottom: 15px;
-}
-.formGroup label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-.formGroup input {
+
+.feedNav {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
 }
-.submitButton {
-  background-color: #0070f3;
-  color: #fff;
-  border: none;
+
+.feedNavSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
+  width: 60%;
+
+  height: 100%;
 }
-.submitButton:hover {
-  background-color: #005bb5;
+
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 1200px;
+}
+
+.navGreeting {
+  flex: 1;
+  text-align: left;
+}
+
+.navGreeting p {
+  font-size: 1.5rem; 
+  color: #5c5c5c; 
+  font-weight: 500;
+  margin: 0; 
+  line-height: 1.2;
+}
+
+.navActions {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navCreate {
+  flex: 1;
+  text-align: right;
+}
+
+.button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #0056b3;
 }

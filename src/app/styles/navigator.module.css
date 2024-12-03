@@ -80,3 +80,15 @@
 .followButton:hover {
     background-color: #0056b3;
 }
+
+.noStreams {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+
+    font-size: 2.5rem;
+    color: #5c5c5c;
+    font-weight: 500;
+}

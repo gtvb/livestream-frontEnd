@@ -1,20 +1,18 @@
 import { auth, signOut } from "@/auth"
-import { Session } from "next-auth"
 import { liveStreamsArraySchema, userSchema } from "../lib/zod"
 import styles from "./index.module.css"
 import Link from "next/link"
-import { redirect } from "next/navigation"
 
 export default async function Page() {
     const session = await auth()
 
     // @ts-ignore
-    const userResponse = await fetch(`http://localhost:3333/user/${session.user?.id}`)
+    const userResponse = await fetch(`${process.env.API_URL}/user/${session.user?.id}`)
     const userData = await userResponse.json()
     const userProfile = await userSchema.parseAsync(userData["user"])
 
     // @ts-ignore
-    const streamResponse = await fetch(`http://localhost:3333/livestreams/${session.user?.id}`)
+    const streamResponse = await fetch(`${process.env.API_URL}/livestreams/${session.user?.id}`)
     const streamData = await streamResponse.json()
     const streams = streamData["livestreams"] === null ? [] : await liveStreamsArraySchema.parseAsync(streamData["livestreams"])
 
@@ -28,13 +26,13 @@ export default async function Page() {
                 <p><strong>Criado em:</strong> {userProfile.created_at.toLocaleDateString()}</p>
                 <p><strong>Atualizado em:</strong> {userProfile.updated_at.toLocaleDateString()}</p>
 
-                <Link href={"/dashboard"}>Voltar para Dashboard</Link>
                 <form action={async () => {
                     "use server"
                     await signOut({ redirectTo: "/login" });
                 }}>
-                    <button type="submit">Logout</button>
+                    <button className="btn" type="submit" style={{borderRadius: "8px"}}>Logout</button>
                 </form>
+                <Link href={"/"} className="btn" style={{borderRadius: "8px"}}>Voltar para Dashboard</Link>
             </div>
 
             <div className={styles.streamSection}>

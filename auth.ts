@@ -11,7 +11,7 @@ const nextAuth = NextAuth({
         password: {},
       },
       authorize: async (credentials) => {
-        const response = await fetch("http://localhost:3333/user/login", {
+        const response = await fetch(`${process.env.API_URL}/user/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(credentials),
@@ -24,8 +24,7 @@ const nextAuth = NextAuth({
         }
 
         const data = await response.json();
-
-        return data["user"];
+        return data["user"]
       },
     }),
   ],

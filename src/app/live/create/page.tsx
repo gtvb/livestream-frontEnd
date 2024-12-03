@@ -47,12 +47,7 @@ export default function Page() {
                             />
                         </div>
                     </div>
-
-
-
-
                     <p aria-live="polite" className={styles.message}>{state?.message}</p>
-
                     <button type="submit" className={styles.submitButton}>Criar Live</button>
                 </form>
             </div>

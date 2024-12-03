@@ -17,7 +17,7 @@ export const authConfig = {
       if (isLoggedIn) {
         // If the user is logged in and tries to access /login or /signup, redirect to /dashboard
         if (redirectablePaths.includes(currentPath)) {
-          return Response.redirect(new URL("/dashboard", nextUrl));
+          return Response.redirect(new URL("/", nextUrl));
         }
         return true;
       } else {
