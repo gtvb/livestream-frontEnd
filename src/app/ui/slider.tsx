@@ -18,6 +18,8 @@ export default function LivestreamNavigator({ feed }: { feed: Feed }) {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + feed.livestreams.length) % feed.livestreams.length);
     };
 
+    console.log("I want ", process.env.API_URL);
+
     return (
         <div className={styles.navigatorContainer}>
             {feed.livestreams.length == 0 ? (
