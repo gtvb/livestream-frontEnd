@@ -34,7 +34,7 @@ export default function LivestreamNavigator({ feed }: { feed: Feed }) {
                             techOrder={["html5"]}
                             autoplay={false}
                             controls={true}
-                            sources={currentStream.live_stream_status ? [{ src: `${process.env.HLS_URL}/hls/${currentStream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
+                            sources={currentStream.live_stream_status ? [{ src: `${process.env.API_URL}/hls/${currentStream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
                         />
                         <div className={styles.infoContainer}>
                             <h1>{currentStream.name}</h1>
