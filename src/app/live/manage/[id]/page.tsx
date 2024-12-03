@@ -49,7 +49,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                     techOrder={["html5"]}
                     autoplay={false}
                     controls={true}
-                    sources={livestream.live_stream_status ? [{ src: `${process.env.API_URL}/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
+                    sources={livestream.live_stream_status ? [{ src: `${process.env.NEXT_PUBLIC_API_URL}/hls/${livestream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
                 />
             </div>
 
