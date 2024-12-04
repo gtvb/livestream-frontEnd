@@ -18,7 +18,7 @@ export default function LivestreamNavigator({ feed }: { feed: Feed }) {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + feed.livestreams.length) % feed.livestreams.length);
     };
 
-    console.log(process.env.NEXT_PULIC_API_URL);
+    console.log(process.env.NEXT_PUBLIC_API_URL);
 
     return (
         <div className={styles.navigatorContainer}>
@@ -36,7 +36,7 @@ export default function LivestreamNavigator({ feed }: { feed: Feed }) {
                             techOrder={["html5"]}
                             autoplay={false}
                             controls={true}
-                            sources={currentStream.live_stream_status ? [{ src: `${process.env.NEXT_PULIC_API_URL}/hls/${currentStream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
+                            sources={currentStream.live_stream_status ? [{ src: `${process.env.NEXT_PUBLIC_API_URL}/hls/${currentStream.id}.m3u8`, type: "application/x-mpegURL" }] : []}
                         />
                         <div className={styles.infoContainer}>
                             <h1>{currentStream.name}</h1>
