@@ -18,7 +18,7 @@ export default function LivestreamNavigator({ feed }: { feed: Feed }) {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + feed.livestreams.length) % feed.livestreams.length);
     };
 
-    console.log(process.env.NEXT_PUBLIC_API_URL);
+    console.log("Env is: ", process.env.NEXT_PUBLIC_API_URL);
 
     return (
         <div className={styles.navigatorContainer}>
